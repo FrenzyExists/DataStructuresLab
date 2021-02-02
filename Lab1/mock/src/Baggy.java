@@ -1,16 +1,31 @@
 package Lab1.mock.src;
 
+import javax.naming.SizeLimitExceededException;
 import java.util.Iterator;
 
 public class Baggy<T> implements Bag<T> {
+    private final static Integer DEFAULT_SIZE = 32;
+    private Integer currentSize;
+    private Integer size;
+    private T[] bagArray;
 
     @Override
-    public void add(T elm) {
-
+    public void add(T newElm) throws SizeLimitExceededException {
+        if(currentSize == size()) {
+            throw new SizeLimitExceededException("Bag reached maximum size");
+        }
+        bagArray[currentSize++] = newElm;
     }
 
     @Override
     public boolean remove(T elm) {
+        for (int i=0; i<size(); i++) {
+            if(bagArray[i].equals(elm)) {
+                bagArray[i] = bagArray[--currentSize];
+                bagArray[currentSize] = null;
+                return true;
+            }
+        }
         return false;
     }
 
@@ -46,7 +61,7 @@ public class Baggy<T> implements Bag<T> {
 
     @Override
     public int size() {
-        return 0;
+        return this.size;
     }
 
     @Override

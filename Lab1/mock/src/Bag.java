@@ -1,5 +1,6 @@
 package Lab1.mock.src;
 
+import javax.naming.SizeLimitExceededException;
 import java.util.Iterator;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Iterator;
 public interface Bag<T> extends Iterable<T> {
 
     // Adds an element to the bag
-    public void add(T elm);
+    public void add(T elm) throws SizeLimitExceededException;
 
     // Removes a desired element from the bag
     public boolean remove(T elm);
