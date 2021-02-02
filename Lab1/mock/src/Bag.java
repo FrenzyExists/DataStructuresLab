@@ -25,7 +25,7 @@ public interface Bag<T> extends Iterable<T> {
     public void clear();
 
     // Outputs a bag of the elements with greater duplicates than the one input
-    public Bag<T> moreFrequentThan(T obj);
+    public Bag<T> moreFrequentThan(T obj) throws SizeLimitExceededException;
 
     // Counts the number of a certain element in bag
     public int count(T elm);
@@ -49,5 +49,5 @@ public interface Bag<T> extends Iterable<T> {
     public boolean equals(Bag<T> b2);
 
     //
-    void bagAdjuster(int i);
+    void bagAdjuster(int i) throws SizeLimitExceededException;
 }
