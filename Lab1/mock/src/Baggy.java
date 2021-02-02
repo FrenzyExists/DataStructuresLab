@@ -129,7 +129,9 @@ public class Baggy<T> implements Bag<T> {
 
     @Override
     public boolean equals(Bag<T> b2) {
-        return false;
+        T[] B = b2.toArray();
+        T[] A = toArray();
+        return Arrays.equals(B, A);
     }
 
     /**

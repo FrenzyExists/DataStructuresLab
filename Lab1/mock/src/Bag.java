@@ -45,9 +45,9 @@ public interface Bag<T> extends Iterable<T> {
     // Iterator for the bag
     public Iterator<T> iterator();
 
-    //
+    // Compares another Bag
     public boolean equals(Bag<T> b2);
 
-    //
+    // Resize Bag
     void bagAdjuster(int i) throws SizeLimitExceededException;
 }
