@@ -1,8 +1,6 @@
 package mock;
 
-import java.util.Iterator;
-
-public class Lab03P1Wrapper {
+public class Lab03P3Wrapper {
 
     public static interface IndexList<E> {
         public int size();
@@ -13,25 +11,26 @@ public class Lab03P1Wrapper {
         public void add(int index, E e) throws IndexOutOfBoundsException;
         public void add(E e);
         public int removeAll(E e);
+        public void insertAfter(E targetElement, E newElement);
     }
-    /**
-     *
-     * @author pedroi.rivera-vega
-     *
-     * @param <E>
-     */
+
     public static class ArrayIndexList<E> implements IndexList<E> {
 
+        //Private Fields
         private static final int INITIAL_CAPACITY = 10;
-        private E[] elements;
-        private int currentSize;
+        private E[] elements;  // the internal array
+        private int currentSize;   //Current number of elements in the list
 
+
+        //Constructor
         @SuppressWarnings("unchecked")
         public ArrayIndexList() {
             elements = (E[]) new Object[INITIAL_CAPACITY];
             currentSize = 0;
         }
 
+
+        /*MEMBER METHODS FOR ArrayIndexList ADT*/
         @Override
         public int size() {
             return currentSize;
@@ -57,13 +56,17 @@ public class Lab03P1Wrapper {
             if (index < 0 || index >= currentSize)
                 throw new IndexOutOfBoundsException("Invalid index for REMOVE operation, index = " + index);
 
-            E etr = elements[index];
+            /* If we get here, then the index is valid and such element exist in the list*/
+            E etr = elements[index];     // element to be removed
 
+            /*Now we shift elements from position index+1 to size-1 one position to the left*/
             for (int i=index; i<currentSize-1; i++)
                 elements[i] = elements[i+1];
 
-            elements[currentSize-1] = null;
-            currentSize--;
+            elements[currentSize-1] = null;    //We set the element to remove to null to avoid memory leaks
+
+            currentSize--;    // Decrement current size of list
+
             return etr;
         }
 
@@ -72,15 +75,19 @@ public class Lab03P1Wrapper {
             if (index < 0 || index >= currentSize)
                 throw new IndexOutOfBoundsException("Invalid index for SET operation, index = " + index);
 
-            E etr = elements[index];
+            // if here, then the index is valid and such element exist in the list
 
-            elements[index] = e;
+            E etr = elements[index];     // element to be replaced
+
+            elements[index] = e;     // element replaced by e
 
             return etr;
         }
 
         @Override
         public void add(int index, E e) throws IndexOutOfBoundsException {
+
+            /*If the index is not from [0, size() -1] then we throw an exception*/
             if (index < 0 || index > currentSize)
                 throw new IndexOutOfBoundsException("Invalid index for ADD operation, index = " + index);
 
@@ -89,6 +96,7 @@ public class Lab03P1Wrapper {
 
             for (int i = currentSize-1; i>=index; i--)
                 elements[i+1] = elements[i];
+
             elements[index] = e;
 
             currentSize++;
@@ -99,7 +107,6 @@ public class Lab03P1Wrapper {
         public void add(E e) {
             add(currentSize, e);
         }
-
 
         @SuppressWarnings("unchecked")
         private void doubleCapacity() {
@@ -114,6 +121,7 @@ public class Lab03P1Wrapper {
             elements = newArr;
         }
 
+
         @Override
         public int removeAll(E e) {
             int countRM = 0;
@@ -123,41 +131,44 @@ public class Lab03P1Wrapper {
                     elements[i] = null;
                 }
                 else if (countRM > 0){
-                    elements[i - countRM] = elements[i];
+                    elements[i - countRM] = elements[i];   // arr[i] is shifter countRM positions to the left...
                     elements[i] = null;
                 }
             }
+
             currentSize = currentSize - countRM;
+
             return countRM;
         }
 
 
+        /**
+         * Implement a member method for the IndexList ADT called insertAfter()
+         * The methods receives as parameter two generic type elements.
+         *
+         * The method inserts a newElement right after every current occurrence in the list,
+         * if any, of  targetElement.
+         *
+         * For example:
+         * If the list is L = {3, 4, 2, 3, 5, 2, 1, 2, 3},
+         * then (consider each of the following operations applied to this original list)
+         *
+         * L.insertAfter(2, 5); would leave the list as: {3, 4, 2, 5, 3, 5, 2, 5, 1, 2, 5, 3}
+         * L.insertAfter(2, 2); would leave the list as: {3, 4, 2, 2, 3, 5, 2, 2, 3, 2, 2, 3}
+         * L.insertAfter(7, 1); would leave the list as it is, because there is no occurrence of 7 in the list.
+         *
+         * @param targetElement
+         * @param newElement
+         */
+        @Override
+        public void insertAfter(E targetElement, E newElement) {
+            /*ADD YOUR CODE HERE*/
+
+        }
+
     }
 
-    /**
-     * Implement a non-member static method for the IndexList ADT called indexesOf()
-     *
-     * The method takes in as parameter an instance of IndexList<E> and generic type element e,
-     *  and it should return an IndexList of type Integer.
-     *
-     * The purpose of the method is to find all indexes of those positions in a given
-     * IndexList object in which there are copies of a given element
-     *
-     * For example assume  L = {1,2,3,2,4,5,2}
-     *
-     * A call to indexesOf(L, 2); returns result = {1,3,6}
-     * A call to indexesOf(L, 8); returns result = {}
-     *
-     * @param <E>
-     * @param list
-     * @param e
-     * @return an instance of IndexList that contains the positions in which e is located in list
-     */
-    public static <E> IndexList<Integer> indexesOf(IndexList<E> list, E e){
 
-        /*ADD YOUR CODE HERE*/
-
-        return null;
-    }
 
 }
+
