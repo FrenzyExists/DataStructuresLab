@@ -162,10 +162,13 @@ public class Lab03P3Wrapper {
          */
         @Override
         public void insertAfter(E targetElement, E newElement) {
-            /*ADD YOUR CODE HERE*/
-
+            for (int i=0; i<size(); i++) {
+                if (get(i).equals(targetElement)) {
+                    add(i+1, newElement);
+                    i+=1;
+                }
+            }
         }
-
     }
 
 

@@ -154,10 +154,13 @@ public class Lab03P1Wrapper {
      * @return an instance of IndexList that contains the positions in which e is located in list
      */
     public static <E> IndexList<Integer> indexesOf(IndexList<E> list, E e){
-
-        /*ADD YOUR CODE HERE*/
-
-        return null;
+        IndexList<Integer> positions = new ArrayIndexList<>();
+        for (int i=0; i<list.size(); i++) {
+            if (list.get(i).equals(e)) {
+                positions.add(i);
+            }
+        }
+        return positions;
     }
 
 }

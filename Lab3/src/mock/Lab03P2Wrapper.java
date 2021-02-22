@@ -225,14 +225,23 @@ public class Lab03P2Wrapper {
          * A call to this.indexesOf(L, 2); returns result = {1,3,6}
          * A call to this.indexesOf(L, 8); returns result = {}
          *
-         * @param e
+         * @param elm
          * @return an instance of IndexList that contains the positions in which e is located in the target list
          */
         @Override
         public IndexList<Integer> indexesOf(E elm){
-            /*ADD YOUR CODE HERE*/
+            IndexList<Integer> positions = new LinkedIndexList<>();
+            int counter = 0;
+            Node<E> currentNode = head;
+            while (currentNode != null) {
+                if (currentNode.getElement().equals(elm)) {
+                    positions.add(counter);
+                }
+                counter ++;
+                currentNode = currentNode.getNext();
+            }
 
-            return null;
+            return positions;
         }
 
     }
