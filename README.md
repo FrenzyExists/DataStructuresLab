@@ -3,6 +3,6 @@ A repo containing labs, sometimes it also includes some practice files I attempt
 
 
 ## TO DO 🗒
-[ ] Generate a nice CLI showing each lab and how it works
-[ ] Clean messy code
-[ ] Proffit
+- [ ] Generate a nice CLI showing each lab and how it works
+- [ ] Clean messy code
+- [ ] Proffit
