@@ -20,4 +20,7 @@ public class Entero implements Comparable<Entero> {
     public int compareTo(Entero other) {
         if (other == null)
             throw new IllegalArgumentException("...");
-        return this.value - other.value;           }       }
+        return this.value - other.value;
+    }
+}
+

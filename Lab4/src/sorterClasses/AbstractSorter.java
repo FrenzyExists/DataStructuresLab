@@ -10,6 +10,7 @@ public abstract class AbstractSorter<E> implements Sorter<E> {
     private String name;   // strategy's name
 
     protected static class DefaultComparator<E> implements Comparator<E> {
+
         public int compare(E o1, E o2) {
             try {
                 return ((Comparable<E>) o1).compareTo(o2);
