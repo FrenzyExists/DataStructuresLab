@@ -1,4 +1,4 @@
-package Practice.interfase;
+package MockTest.App.Interfases;
 
 /**
  * Stack Interfase, StackedQueue, ArrayStack and Linked Stack uses this

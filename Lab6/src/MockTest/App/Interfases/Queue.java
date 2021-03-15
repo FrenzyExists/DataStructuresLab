@@ -1,4 +1,4 @@
-package MockTest.App;
+package MockTest.App.Interfases;
 
 public interface Queue<T> {
 
