@@ -4,7 +4,7 @@ package MockTest.App.Interfases;
  * Stack Interfase, StackedQueue, ArrayStack and Linked Stack uses this
  * @param <T>
  */
-public interface Stack<T> {
+public interface Stack<T> extends Iterable<T> {
 
     /**
      * Pushes an item onto the top of this stack.

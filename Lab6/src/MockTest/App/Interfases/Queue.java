@@ -1,6 +1,8 @@
 package MockTest.App.Interfases;
 
-public interface Queue<T> {
+import MockTest.App.Exceptions.EmptyQueueException;
+
+public interface Queue<T> extends Iterable<T> {
 
     /**
      *
@@ -9,32 +11,37 @@ public interface Queue<T> {
     int size();
 
     /**
-     *
+     * Inserts the specified element into this queue if it is possible to do so
+     * immediately without violating capacity restrictions
+     * @param node - The node to be enqueued
      */
-    void enqueue();
+    void enqueue(T node);
+
 
     /**
-     *
-     * @return
+     * Removes and returns the node at the top of this queue.
+     * @return the node at the top of this queue
+     * @throws EmptyQueueException if the queue is empty before the operation.
      */
     T dequeue();
 
     /**
-     *
-     * @return
-     */
-    T element();
-
-    /**
-     *
-     * @param node
-     * @return
+     * enqueues an element if possible
+     * @param node - a new node to the queue
+     * @return true -> if it successfully enqueues the node | false -> if it violates capacity
      */
     boolean offer(T node);
 
     /**
-     *
-     * @return
+     * Retrieves, but does not dequeue the node that is at the top of the queue
+     * @return The node at the top of the queue
      */
     T peek();
+
+    /**
+     * Returns true if this queue contains no nodes
+     * @return true -> no nodes in here | false -> there's nodes in here
+     */
+    boolean isEmpty();
+
 }
