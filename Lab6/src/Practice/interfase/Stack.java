@@ -13,21 +13,22 @@ public interface Stack<T> {
     void push(T node);
 
     /**
-     * Removes the object at the top of this stack and returns that object as the
+     * Removes the node at the top of this stack and returns that node as the
      * value of this function.
-     * @return The object at the top of this stack
+     * @return The node at the top of this stack
      */
     T pop();
 
     /**
-     *
-     * @return
+     * Looks at the node at the top of this stack without removing it from the
+     * stack.
+     * @return The node at the top of this stack
      */
     T peek();
 
     /**
-     *
-     * @return
+     * How many nodes are in this stack
+     * @return number of nodes in stack
      */
     Integer size();
 
