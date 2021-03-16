@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+welcome() {
 printf  "%s" "\
  ___       ________  ________             ___    ___       ________              ________  ___  ___  _______   ___  ___  _______   ________
 |\  \     |\   __  \|\   __  \           |\  \  |\  \     |\   ____\ ___        |\   __  \|\  \|\  \|\  ___ \ |\  \|\  \|\  ___ \ |\   ____\
@@ -17,9 +18,22 @@ Version 0.1v: Slim Pickens Hell Rodeo
 
   -- path | -p  ==> path of data
   --help  | -h  ==> view this message
-"
 
-while "$1"
+
+  Refer to manpage for detailed explanation of Queues (as learned in class)
+"
+exit 1
+}
+
+while test $# -gt 0; do
+  case "$1" in
+  -h|--help)
+    welcome
+    ;;
+
+
+  esac
+done
 
 
 

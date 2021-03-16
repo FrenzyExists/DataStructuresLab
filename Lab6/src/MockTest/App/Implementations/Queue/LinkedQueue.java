@@ -1,17 +1,23 @@
 package MockTest.App.Implementations.Queue;
 
+import MockTest.App.Abstraction.Node;
 import MockTest.App.Exceptions.EmptyQueueException;
+import MockTest.App.Implementations.Nody;
 import MockTest.App.Interfases.Queue;
 
 import java.util.Iterator;
 
 public class LinkedQueue<T> implements Queue<T> {
+    private Nody<T> head, tail;
+    private Integer size = 0;
+
     /**
      * @return
      */
     @Override
-    public int size() {
-        return 0;
+    public Integer size() {
+        return this.size;
+
     }
 
     /**
@@ -22,7 +28,12 @@ public class LinkedQueue<T> implements Queue<T> {
      */
     @Override
     public void enqueue(T node) {
-
+         Nody<T> newNode = new Nody<T>(node, null);
+         if (size == 0) {
+             head = tail = newNode;
+         } else {
+             tail.setNextNode(newNode);
+         }
     }
 
     /**
@@ -67,8 +78,13 @@ public class LinkedQueue<T> implements Queue<T> {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Iterator<T> iterator() {
         return null;
     }
 }
+

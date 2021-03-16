@@ -8,7 +8,7 @@ public interface Queue<T> extends Iterable<T> {
      *
      * @return
      */
-    int size();
+    Integer size();
 
     /**
      * Inserts the specified element into this queue if it is possible to do so

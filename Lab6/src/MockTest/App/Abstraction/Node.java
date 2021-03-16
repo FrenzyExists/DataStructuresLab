@@ -6,9 +6,9 @@ package MockTest.App.Abstraction;
  * @param <T> -> Generics
  */
 public abstract class Node<T> {
-    private T node;
-    private Node<T> newNodeA;
-    private Node<T> newNodeB;
+    protected T node;
+    protected Node<T> newNodeA;
+    protected Node<T> newNodeB;
 
     /**
      *  Single Node with data, super simple
@@ -40,4 +40,26 @@ public abstract class Node<T> {
         this.newNodeA = newNodeA;
         this.newNodeB = newNodeB;
     }
+
+    /**
+     *
+     * @return
+     */
+    public T clear() {
+        T data = this.node;
+        this.node = null;
+        this.newNodeA = null;
+        this.newNodeB = null;
+
+        return data;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public T get() {
+        return this.node;
+    }
+
 }

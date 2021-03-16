@@ -11,4 +11,13 @@ public class Nody<T> extends Node<T> {
     public Nody(T node, Node<T> nextNode) {
         super(node, nextNode);
     }
+
+    public void setNewNode(T node) {
+        this.node = node;
+    }
+
+    public void setNextNode(Node<T> nextNode) {
+        this.newNodeA = nextNode;
+    }
+
 }

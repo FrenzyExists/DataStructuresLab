@@ -10,7 +10,7 @@ public class ArrayQueue<T> implements Queue<T> {
      * @return
      */
     @Override
-    public int size() {
+    public Integer size() {
         return 0;
     }
 

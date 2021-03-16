@@ -1,0 +1,15 @@
+.\" SOLVE THE CRIME - A Data Structures Project
+.\" Contact angel.garcia20@upr.edu to correct errors or typos.
+.TH man 1 "7 Mar 2021" "0.1" "Geek Lasagna"
+.SH NAME
+solve \- A Java Program made so I can get an A on DS
+.SH SYNOPSIS
+Solve is a simple Java project that applies on practical usage different ADTs learned from my Data Structures course. Is the first of other DS projects done in the course, specifically during Spring semester of 2021.
+.SH DESCRIPTION
+Solve escencially reads a folder containing data of the form  F_i_j.txt and will calculate the intersection of the union of the data contained in such files
+.SH OPTIONS
+Run the bash script ./solve or  ./solve -h to list all options
+.SH AUTHOR
+Angel L Garcia Guzman
+Student ID: 802-17-6928
+Course and Section: ICOM4020-086
