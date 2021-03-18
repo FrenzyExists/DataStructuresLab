@@ -1,5 +1,6 @@
 package MockTest.App.Implementations.Stack;
 
+import MockTest.App.Exceptions.EmptyStackException;
 import MockTest.App.Interfases.Stack;
 
 import java.util.Iterator;
@@ -8,7 +9,7 @@ public class ArrayStack<T> implements Stack<T> {
     private static final Integer INITIALSIZE = 16; // Start size, picked 16 cuz of 2^n
     private T[] ArrUnderHood; //The Array Under the Hood
     Integer size = 0;
-
+    private Integer i = 0;
     /**
      * Pushes an item onto the top of this stack.
      *
@@ -16,6 +17,11 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public void push(T node) {
+        if (i == size) {
+
+        }
+        ArrUnderHood[i] = node;
+        i++;
 
     }
 
@@ -24,6 +30,7 @@ public class ArrayStack<T> implements Stack<T> {
      * value of this function.
      *
      * @return The node at the top of this stack
+     * @throws EmptyStackException
      */
     @Override
     public T pop() {
@@ -35,6 +42,7 @@ public class ArrayStack<T> implements Stack<T> {
      * stack.
      *
      * @return The node at the top of this stack
+     * @throws EmptyStackException
      */
     @Override
     public T peek() {
@@ -69,7 +77,7 @@ public class ArrayStack<T> implements Stack<T> {
      * @return true -> Yup is empty | false -> we have nodes over here!
      */
     @Override
-    public boolean empty() {
+    public boolean isEmpty() {
         return false;
     }
 

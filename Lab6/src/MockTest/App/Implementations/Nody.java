@@ -16,8 +16,12 @@ public class Nody<T> extends Node<T> {
         this.node = node;
     }
 
-    public void setNextNode(Node<T> nextNode) {
+    public void setNextNode(Nody<T> nextNode) {
         this.newNodeA = nextNode;
+    }
+
+    public Node<T> getNextNode() {
+        return this.newNodeA;
     }
 
 }

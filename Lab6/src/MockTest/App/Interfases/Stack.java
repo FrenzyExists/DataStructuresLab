@@ -55,6 +55,6 @@ public interface Stack<T> extends Iterable<T> {
      * Is this stack empty?
      * @return true -> Yup is empty | false -> we have nodes over here!
      */
-    boolean empty();
+    boolean isEmpty();
 
 }
