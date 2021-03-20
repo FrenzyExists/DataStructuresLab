@@ -47,4 +47,13 @@ public class ArrayIndexList<T> implements IndexList<T> {
     public void removeAll() {
 
     }
+
+    /**
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    @Override
+    public T[] cloneList() throws CloneNotSupportedException {
+        return null;
+    }
 }

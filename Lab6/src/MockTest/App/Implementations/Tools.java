@@ -1,6 +1,8 @@
 package MockTest.App.Implementations;
 
+import MockTest.App.Implementations.IndexList.ArrayIndexList;
 import MockTest.App.Implementations.Queue.LinkedQueue;
+import MockTest.App.Interfases.IndexList;
 import MockTest.App.Interfases.Queue;
 
 /**
@@ -41,6 +43,73 @@ public class Tools {
         return q;
     }
 
+    /**
+     *
+     * @param brackets
+     * @return
+     */
+    public static boolean checkBalanced(String brackets) {
 
+        return false;
+    }
 
+    /**
+     *
+     * @param thing
+     * @return
+     */
+    public static String convertToPostfix(String thing) {
+
+        return thing;
+    }
+
+    /**
+     *
+     * @param posfix
+     * @return
+     */
+    public static double evaluatePostfix(String posfix) {
+        double res = 0.0;
+
+        return res;
+    }
+
+    /**
+     *
+     * @param infix
+     * @return
+     */
+    public static double evaluateInfix(String infix) {
+        double res = 0.0;
+
+        return res;
+    }
+
+    /**
+     *
+     * @param palindrome
+     * @return
+     */
+    public static boolean isPalindrome(String palindrome) {
+
+        return true;
+    }
+
+    /**
+     *
+     * @param list
+     * @param node
+     * @param <T>
+     * @return
+     */
+    public static <T> IndexList<Integer> indexesOf(IndexList<T> list, T node){
+        IndexList<Integer> x = new ArrayIndexList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i).equals(node)) {
+                x.add(i);
+            }
+        }
+        return x;
+
+    }
 }
