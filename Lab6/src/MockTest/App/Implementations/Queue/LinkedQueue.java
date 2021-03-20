@@ -1,6 +1,5 @@
 package MockTest.App.Implementations.Queue;
 
-import MockTest.App.Abstraction.Node;
 import MockTest.App.Exceptions.EmptyQueueException;
 import MockTest.App.Implementations.Nody;
 import MockTest.App.Interfases.Queue;
@@ -8,8 +7,12 @@ import MockTest.App.Interfases.Queue;
 import java.util.Iterator;
 
 public class LinkedQueue<T> implements Queue<T> {
-    private Nody<T> head, tail;
     private Integer size = 0;
+
+    // reference to the first node in the linked list;
+    // reference to the last node in the linked list;
+    private Nody<T> first, last;
+
 
     /**
      * @return
@@ -17,7 +20,6 @@ public class LinkedQueue<T> implements Queue<T> {
     @Override
     public Integer size() {
         return this.size;
-
     }
 
     /**
@@ -30,10 +32,12 @@ public class LinkedQueue<T> implements Queue<T> {
     public void enqueue(T node) {
          Nody<T> newNode = new Nody<T>(node, null);
          if (size == 0) {
-             head = tail = newNode;
+             first = last = newNode;
          } else {
-             tail.setNextNode(newNode);
+             last.setNextNode(newNode);
+             last = newNode;
          }
+        size++;
     }
 
     /**
@@ -44,7 +48,17 @@ public class LinkedQueue<T> implements Queue<T> {
      */
     @Override
     public T dequeue() {
-        return null;
+        System.out.println(size);
+        if(isEmpty()) {
+            throw new EmptyQueueException("Bitch your queue is empty");
+        }
+        Nody<T> nodyMody = first;
+        if(size == 1){
+            last = null;
+        }
+        first = (Nody<T>) first.getNextNode();
+        size--;
+        return nodyMody.clear();
     }
 
     /**
@@ -55,6 +69,11 @@ public class LinkedQueue<T> implements Queue<T> {
      */
     @Override
     public boolean offer(T node) {
+        //fix
+        if (size == 0) {
+            enqueue(node);
+            return true;
+        }
         return false;
     }
 
@@ -75,7 +94,20 @@ public class LinkedQueue<T> implements Queue<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
+    }
+
+    @Override
+    public void clear() {
+        Nody<T> ntd = first;
+        while (first != null) {
+            ntd.clear();
+            first = (Nody<T>) first.getNextNode();
+            ntd = first;
+        }
+
+        last = null;
+        size = 0;
     }
 
     /**
@@ -86,5 +118,9 @@ public class LinkedQueue<T> implements Queue<T> {
     public Iterator<T> iterator() {
         return null;
     }
+
+
+
+
 }
 

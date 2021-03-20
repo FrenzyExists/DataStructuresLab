@@ -1,5 +1,9 @@
 package MockTest.App;
 
+import MockTest.App.Implementations.Nody;
+import MockTest.App.Implementations.Stack.LinkedStack;
+import MockTest.App.Interfases.Stack;
+
 /**
  * A Job for this lab activity. 
  * @author pedroirivera-vega
@@ -49,6 +53,21 @@ public class Job {
 				"  Arrival Time = " + arrivalTime +
 				"  Remaining Time = " + remainingTime +
 				"  Departure Time = " + departureTime; 				
+	}
+
+	public static <T> T[] removeLessThan(LinkedStack<T> stack, T node) {
+		T[] newArray = null;
+
+		Stack<T> stay = new LinkedStack<>();
+		Stack<T> leave = new LinkedStack<>();
+
+		while (!stack.isEmpty()) {
+			T e = stack.pop();
+			if ( ((Comparable<T> ) e).compareTo(node) <0 ) {
+
+			}
+		}
+		return newArray;
 	}
 }
 

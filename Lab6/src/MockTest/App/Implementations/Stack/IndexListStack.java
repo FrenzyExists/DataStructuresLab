@@ -1,14 +1,17 @@
 package MockTest.App.Implementations.Stack;
 
 import MockTest.App.Exceptions.EmptyStackException;
+import MockTest.App.Implementations.IndexList.ArrayIndexList;
+import MockTest.App.Interfases.IndexList;
 import MockTest.App.Interfases.Stack;
 
 import java.util.Iterator;
 
-public class ArrayStack<T> implements Stack<T> {
-    private static final Integer INITIAL_SIZE = 16; // Start size, picked 16 cuz of 2^n
-    private T[] ArrUnderHood = (T[]) new Object[INITIAL_SIZE]; //The Array Under the Hood
-    Integer size = 0;
+public class IndexListStack<T> implements Stack<T> {
+
+    private IndexList<T> list = new ArrayIndexList<>();
+
+
     /**
      * Pushes an item onto the top of this stack.
      *
@@ -16,28 +19,23 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public void push(T node) {
-        if (ArrUnderHood.length/2 == size) {
-            doubleSize();
-        }
-        ArrUnderHood[size++] = node;
     }
 
     /**
      * Removes the node at the top of this stack and returns that node as the
-     * value of this function.
+     * value of this function. It is not good that this method returns null if
+     * a node is not found. For example, there's a chance that a program may require
+     * to store null values, and if the stack is empty and it returns null it could cause
+     * many complications, and one could not tell if the null value is due of the stack
+     * being empty or that the node retrieved is holding a null value. Therefore, an
+     * exception must be utilized to evade such complications
      *
      * @return The node at the top of this stack
      * @throws EmptyStackException
      */
     @Override
     public T pop() {
-        if (isEmpty()) {
-            throw new EmptyStackException("Dude, your stack is empty");
-        }
-        T Bobby = ArrUnderHood[size-1];
-        ArrUnderHood[size--] = null;
-        return Bobby;
-
+        return null;
     }
 
     /**
@@ -49,10 +47,7 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public T peek() {
-        if (isEmpty()) {
-            throw new EmptyStackException("Dude, your stack is empty");
-        }
-        return ArrUnderHood[size-1];
+        return null;
     }
 
     /**
@@ -62,7 +57,7 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public Integer size() {
-        return size;
+        return null;
     }
 
     /**
@@ -74,12 +69,7 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public Integer search(T node) {
-        for (int i=0 ; i<size ; i++ ) {
-            if (ArrUnderHood[i].equals(node)) {
-                return i;
-            }
-        }
-        return -1;
+        return null;
     }
 
     /**
@@ -89,7 +79,7 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return false;
     }
 
     /**
@@ -97,21 +87,11 @@ public class ArrayStack<T> implements Stack<T> {
      */
     @Override
     public void clear() {
-        ArrUnderHood = (T[]) new Object[INITIAL_SIZE];
-        size = 0;
+
     }
 
     @Override
     public Iterator<T> iterator() {
-        // Ni puta idea lo que va aqui :v
-
         return null;
     }
-
-    private void doubleSize() {
-        T[] newArrUnderTheHood = (T[]) new Object[ArrUnderHood.length * 2];
-        System.arraycopy(ArrUnderHood, 0, newArrUnderTheHood, 0, ArrUnderHood.length);
-        ArrUnderHood = newArrUnderTheHood;
-    }
 }
-

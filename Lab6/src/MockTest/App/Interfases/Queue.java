@@ -44,4 +44,6 @@ public interface Queue<T> extends Iterable<T> {
      */
     boolean isEmpty();
 
+    void clear();
+
 }

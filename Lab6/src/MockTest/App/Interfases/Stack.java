@@ -57,4 +57,9 @@ public interface Stack<T> extends Iterable<T> {
      */
     boolean isEmpty();
 
+    /**
+     * Clears Stack. That's it
+     */
+    void clear();
+
 }

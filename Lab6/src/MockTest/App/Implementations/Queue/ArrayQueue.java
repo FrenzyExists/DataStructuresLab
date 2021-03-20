@@ -6,12 +6,16 @@ import MockTest.App.Interfases.Queue;
 import java.util.Iterator;
 
 public class ArrayQueue<T> implements Queue<T> {
+    private static final Integer INITIAL_SIZE = 16; // Start size, picked 16 cuz of 2^n
+    private T[] ArrUnderHood = (T[]) new Object[INITIAL_SIZE]; //The Array Under the Hood
+    Integer size = 0;
+
     /**
      * @return
      */
     @Override
     public Integer size() {
-        return 0;
+        return size;
     }
 
     /**
@@ -51,10 +55,18 @@ public class ArrayQueue<T> implements Queue<T> {
      * Retrieves, but does not dequeue the node that is at the top of the queue
      *
      * @return The node at the top of the queue
+     * @throws EmptyQueueException
      */
     @Override
     public T peek() {
+        if (isEmpty()) {
+            throw new EmptyQueueException("Bitch your queue is empty");
+        }
+
         return null;
+
+
+
     }
 
     /**
@@ -64,11 +76,17 @@ public class ArrayQueue<T> implements Queue<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
+    }
+
+    @Override
+    public void clear() {
+
     }
 
     @Override
     public Iterator<T> iterator() {
+        // I have no idea what to with this...
         return null;
     }
 }

@@ -6,6 +6,10 @@ import MockTest.App.Interfases.Stack;
 
 import java.util.Iterator;
 
+/**
+ * A stack that works like a linked List aka via nodes
+ * @param <T>
+ */
 public class LinkedStack<T> implements Stack<T> {
     Nody<T> head;
     Integer size = 0;
@@ -31,6 +35,9 @@ public class LinkedStack<T> implements Stack<T> {
      */
     @Override
     public T pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException("Ur stack is empty");
+        }
         T oldNode = head.get();
         Nody<T> killMe = head;
         head = (Nody<T>) head.getNextNode();
@@ -48,6 +55,9 @@ public class LinkedStack<T> implements Stack<T> {
      */
     @Override
     public T peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException("Ur stack is empty");
+        }
         return head.get();
     }
 
@@ -70,7 +80,16 @@ public class LinkedStack<T> implements Stack<T> {
      */
     @Override
     public Integer search(T node) {
-        return null;
+        Nody<T> nodyMody = head;
+        Integer counter = 0;
+        while (nodyMody != null) {
+            if (nodyMody.get().equals(node)) {
+                return counter;
+            }
+            counter++;
+            nodyMody = (Nody<T>) nodyMody.getNextNode();
+        }
+        return counter;
     }
 
     /**
@@ -83,8 +102,18 @@ public class LinkedStack<T> implements Stack<T> {
         return size == 0;
     }
 
+    /**
+     * Clears Stack. That's it
+     */
+    @Override
+    public void clear() {
+        head = null;
+        size = 0;
+    }
+
     @Override
     public Iterator iterator() {
+
         return null;
     }
 }
